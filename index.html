@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan - MAS SUBULUSSALAM SUMBERJO</title>
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- HTML2PDF untuk fitur cetak SKL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-green': '#10B981', 
+                        'brand-dark-green': '#047857',
+                        'brand-yellow': '#FBBF24', 
+                        'brand-blue': '#1E3A8A', 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+        .slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        #skl-document {
+            display: none;
+            background: white;
+            color: black;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timer-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            min-width: 60px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo-main-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 4px solid #FBBF24;
+            padding: 5px;
+            overflow: hidden;
+            background-color: #000; /* Latar belakang hitam agar sesuai dengan logo */
+        }
+        
+        .logo-img-src {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Styling Ikon WA Helpdesk */
+        .wa-float-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366;
+            color: white;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse-wa 2s infinite;
+        }
+
+        .wa-float-icon:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-brand-blue via-brand-green to-brand-yellow min-h-screen flex flex-col justify-between text-gray-800">
+
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-6">
+        <div class="glass-card w-full max-w-3xl rounded-2xl overflow-hidden fade-in border-t-4 border-brand-yellow relative">
+            
+            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow opacity-10 rounded-bl-full z-0"></div>
+            <div class="absolute bottom-0 left-0 w-40 h-40 bg-brand-green opacity-10 rounded-tr-full z-0"></div>
+
+            <div class="relative z-10 p-6 sm:p-10">
+
+                <!-- HALAMAN 1: SAMBUTAN -->
+                <div id="page-sambutan" class="space-y-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="logo-main-container">
+                            <!-- Pastikan file logo Anda bernama LOGO SBS.jpg dan berada di folder yang sama dengan file HTML ini -->
+                            <img src="https://www.hostpic.org/images/2605020923520083.png" alt="MAS Subulussalam Sumberjo" class="logo-img-src">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-brand-dark-green leading-tight">
+                            PENGUMUMAN KELULUSAN<br>
+                            <span class="text-brand-blue uppercase">MAS Subulussalam Sumberjo</span>
+                        </h1>
+                        <p class="text-sm font-semibold text-gray-500 mt-2 tracking-widest uppercase">Tahun Pelajaran 2025/2026</p>
+                    </div>
+
+                    <div class="text-left bg-green-50 p-6 rounded-xl border border-green-100 shadow-inner">
+                        <p class="mb-4 font-medium text-gray-700">Assalamu’alaikum Warahmatullahi Wabarakatuh,</p>
+                        <p class="mb-4 text-gray-600 text-sm sm:text-base leading-relaxed text-justify">
+                            Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa, atas rahmat dan karunia-Nya sehingga seluruh siswa telah menyelesaikan jenjang pendidikan selama 3 tahun dengan penuh perjuangan dan dedikasi di <b>MAS SUBULUSSALAM SUMBERJO</b>.
+                        </p>
+                        <p class="mb-4 text-gray-600 text-sm sm:text-base leading-relaxed text-justify">
+                            Saya selaku Kepala Madrasah mengucapkan selamat dan sukses kepada seluruh Siswa/i atas capaian yang telah diraih. Semoga ilmu yang diperoleh menjadi bekal untuk melangkah ke jenjang berikutnya. Tetaplah menjaga nama baik almamater.
+                        </p>
+                        <p class="mb-6 font-medium text-gray-700">Wassalamu’alaikum Warahmatullahi Wabarakatuh.</p>
+                        
+                        <div class="flex flex-col items-end text-center mt-6">
+                            <p class="text-sm text-gray-600">Kepala Madrasah,</p>
+                            <div class="py-4">
+                                <img src="https://www.hostpic.org/images/2605021005210101.jpeg" alt="Tanda Tangan" class="w-32 opacity-80">
+                            </div>
+                            <p class="font-bold text-brand-dark-green underline underline-offset-4">(RIDWAN PURNAMA), S.P</p>
+                            <p class="text-xs text-gray-500 mt-1"> </p>
+                        </div>
+                    </div>
+
+                    <button onclick="goToCekHalaman()" class="w-full sm:w-auto px-8 py-4 bg-brand-blue hover:bg-blue-800 text-white font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
+                        🔍 MENU CEK KELULUSAN
+                    </button>
+                </div>
+
+                <!-- HALAMAN 2: CEK HASIL KELULUSAN -->
+                <div id="page-cek" class="hidden space-y-6">
+                    
+                    <button onclick="kembaliKeSambutan()" class="text-brand-dark-green hover:text-brand-blue font-medium flex items-center text-sm mb-4 transition-colors">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        Kembali ke Sambutan
+                    </button>
+
+                    <div class="text-center">
+                        <div class="flex justify-center mb-3">
+                             <img src="https://www.hostpic.org/images/2605020923520083.png" alt="Logo" class="w-16 h-16 object-contain rounded-full border-2 border-brand-yellow bg-black p-1">
+                        </div>
+                        <h2 class="text-2xl font-bold text-brand-blue uppercase">Cek Kelulusan Siswa</h2>
+                        <p class="text-gray-500 text-sm mt-1">Silakan masukkan NISN 10 digit Anda di bawah ini</p>
+                    </div>
+
+                    <!-- Countdown Timer Section -->
+                    <div id="countdown-container" class="bg-blue-50 border-2 border-brand-blue p-6 rounded-xl shadow-inner hidden">
+                        <div class="text-center space-y-4">
+                            <p class="text-brand-blue font-bold uppercase tracking-widest text-sm">Waktu Tunggu Akses</p>
+                            <div class="flex justify-center gap-3">
+                                <div class="timer-unit">
+                                    <span id="days" class="text-2xl font-bold text-brand-blue">00</span>
+                                    <span class="text-[10px] text-gray-500 uppercase">Hari</span>
+                                </div>
+                                <div class="timer-unit">
+                                    <span id="hours" class="text-2xl font-bold text-brand-blue">00</span>
+                                    <span class="text-[10px] text-gray-500 uppercase">Jam</span>
+                                </div>
+                                <div class="timer-unit">
+                                    <span id="minutes" class="text-2xl font-bold text-brand-blue">00</span>
+                                    <span class="text-[10px] text-gray-500 uppercase">Menit</span>
+                                </div>
+                                <div class="timer-unit">
+                                    <span id="seconds" class="text-2xl font-bold text-brand-blue">00</span>
+                                    <span class="text-[10px] text-gray-500 uppercase">Detik</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="form-container" class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <form id="form-cek" onsubmit="cekKelulusan(event)">
+                            <div class="mb-4">
+                                <label for="nisn" class="block text-sm font-semibold text-gray-700 mb-2 uppercase">NISN SISWA</label>
+                                <input type="text" id="nisn" placeholder="0123456789" required autocomplete="off" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-brand-green focus:ring-brand-green transition-colors text-xl text-center tracking-[0.2em] font-mono shadow-sm">
+                            </div>
+                            <button type="submit" id="btn-cek" class="w-full py-3 bg-brand-green hover:bg-brand-dark-green text-white font-bold rounded-lg shadow-md transition-colors text-lg uppercase">
+                                LIHAT HASIL SEKARANG
+                            </button>
+                        </form>
+
+                        <div id="error-message" class="hidden mt-4 bg-red-100 text-red-700 p-3 rounded-lg text-sm text-center font-medium border border-red-200">
+                            Data tidak ditemukan. Silakan hubungi pihak madrasah jika NISN sudah benar.
+                        </div>
+
+                        <!-- Ikon WA Helpdesk Saja (Tanpa Nomor) -->
+                        <div class="mt-10 text-center">
+                            <p class="text-[10px] text-gray-400 mb-3 uppercase tracking-[0.2em] font-semibold">Butuh Bantuan?</p>
+                            <a href="https://wa.me/6282277776514?text=Assalamu'alaikum%20Admin%20MAS%20Subulussalam,%20saya%20mengalami%20kendala%20saat%20mengecek%20hasil%20kelulusan." target="_blank" class="wa-float-icon" title="Hubungi Helpdesk via WhatsApp">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.031 6.172c-2.335 0-4.241 1.906-4.241 4.241 0 .736.188 1.455.547 2.086l-.58 2.115 2.164-.567c.603.328 1.28.502 1.975.502 2.335 0 4.241-1.906 4.241-4.241s-1.906-4.241-4.241-4.241zm2.535 6.046c-.104.293-.603.541-.837.575-.234.034-.523.056-.849-.045-.214-.067-.484-.158-.789-.293-1.285-.567-2.12-1.888-2.188-1.977-.067-.09-.541-.722-.541-1.376 0-.654.338-.971.461-1.104.124-.135.27-.169.361-.169s.18 0 .259.006c.079.005.186-.034.292.226.11.265.372.903.406.971.034.068.056.147.011.237-.045.09-.067.147-.135.226-.068.079-.141.175-.203.243-.067.068-.135.147-.056.282.079.135.35 1.139.75 1.488.513.456.942.597 1.077.665.135.068.214.056.293-.034.079-.09.338-.395.428-.53.09-.135.18-.113.305-.068s.789.372.925.44c.135.068.226.102.259.158.034.056.034.327-.071.62zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176l-1.435 5.234 5.351-1.405C8.75 21.696 10.316 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- HASIL KELULUSAN -->
+                    <div id="hasil-container" class="hidden slide-up bg-white border-2 rounded-xl p-6 shadow-lg text-center mt-6"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-white py-4 text-xs sm:text-sm font-light z-10 relative bg-black/20 backdrop-blur-sm">
+        &copy; 2026 MAS SUBULUSSALAM SUMBERJO - Kabupaten Labuhanbatu Selatan
+    </footer>
+
+    <!-- TEMPLATE SKL PDF -->
+    <div id="skl-document">
+        <div style="display: flex; align-items: center; border-bottom: 4px solid black; padding-bottom: 15px; margin-bottom: 25px;">
+            <div style="flex: 0 0 100px; text-align: center;">
+                <img src="https://www.hostpic.org/images/2605020923520083.png" alt="MAS Subulussalam Sumberjo" alt="Logo Madrasah" style="width: 90px; height: 90px; object-fit: contain;">
+            </div>
+            <div style="flex: 1; text-align: center; padding-right: 50px;">
+                <h2 style="margin: 0; font-size: 16px; font-weight: bold; color: #000;">YAYASAN MADRASAH SUBULUSSALAM SUMBERJO</h2>
+                <h1 style="margin: 5px 0; font-size: 20px; font-weight: bold; color: #1E3A8A;">MAS SUBULUSSALAM SUMBERJO</h1>
+                <p style="margin: 0; font-size: 11px;">Alamat: Jln. Protokol Sumberjo pasarsatu, Desa Asam Jawa,Kec. Torgamba, Kabupaten Labuhanbatu Selatan, Provinsi Sumatera Utara</p>
+                <p style="margin: 0; font-size: 10px;">Email: massubulussalams@gmail.com | Website: www.massubulussalam.sch.id</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h3 style="margin: 0; font-size: 18px; text-decoration: underline; font-weight: bold;">SURAT KETERANGAN LULUS (SKL)</h3>
+            <p style="margin: 5px 0 0 0; font-size: 13px;">Nomor: 741.SKL/MAS.SS/V/2026</p>
+        </div>
+
+        <p style="font-size: 14px; line-height: 1.5;">Yang bertanda tangan di bawah ini, Kepala Madrasah Aliyah Swasta Subulussalam Sumberjo, menerangkan bahwa:</p>
+
+        <table style="width: 100%; margin: 25px 0; font-size: 14px; line-height: 2;">
+            <tr><td style="width: 30%;">Nama Lengkap</td><td style="width: 5%;">:</td><td><strong id="pdf-nama" style="text-transform: uppercase;"></strong></td></tr>
+            <tr><td>NISN</td><td>:</td><td id="pdf-nisn"></td></tr>
+            <tr><td>Program Studi</td><td>:</td><td id="pdf-jurusan"></td></tr>
+            <tr><td>Nilai Rata-Rata</td><td>:</td><td id="pdf-nilai"></td></tr>
+        </table>
+
+        <p style="font-size: 14px; line-height: 1.5; text-align: justify;">Berdasarkan hasil Keputusan Rapat Pleno Dewan Guru tentang Kelulusan Peserta Didik Tahun Pelajaran 2025/2026 pada tanggal 30 April 2026, siswa tersebut di atas dinyatakan:</p>
+
+        <div style="text-align: center; margin: 35px 0;">
+            <div style="display: inline-block; border: 5px double black; padding: 15px 50px;">
+                <h2 style="font-size: 28px; font-weight: bold; letter-spacing: 10px; margin: 0;">L U L U S</h2>
+            </div>
+
+            <p style="text-align: justify; line-height: 1.6; font-size: 14px;">
+            Demikian Surat Keterangan Lulus ini dibuat dengan sebenarnya agar dapat dipergunakan sebagaimana mestinya.
+        </p>
+
+        <div style="margin-top: 40px; border-top: 1px dashed #ccc; padding-top: 10px; font-size: 11px; font-style: italic; color: #555;">
+            <p>* Dokumen ini diterbitkan secara digital. : <strong></strong></p>
+        </div>
+
+        <div style="margin-top: 40px; text-align: right; font-size: 14px; padding-right: 30px;">
+            <p>Sumberjo, 4 Mei 2026</p>
+            <p>Kepala Madrasah,</p>
+            <br><br>
+            <p><strong>(RIDWAN PURNAMA), S.P</strong></p>
+            <p style="font-size: 12px;"></p>
+        </div>
+    </div>
+
+    <script>
+        // Simulasi Data Kelulusan (Anda dapat menambah atau mengubah data di sini)
+        const dataKelulusan = [
+            { nisn: "1234567890", nama: "Ahmad Fauzi", jurusan: "IPA", nilai: "88.50", status: "LULUS" },
+	    { nisn: "0088000367", nama : "ABDUL HARIS", jurusan: "IPA ", nilai: "79,53", status: "LULUS" },
+{ nisn: "1234567890", nama: "Ahmad Fauzi", jurusan: "IPA ", nilai: "88.50", status: "LULUS" },
+{ nisn: "0088000367", nama : "ABDUL HARIS", jurusan: "IPA ", nilai: "79,53", status: "LULUS" },
+{ nisn: "3071150342", nama : "ABIT UBAIDILLAH", jurusan: "IPA ", nilai: "79,44", status: "LULUS" },
+{ nisn: "0082547794", nama: "AHMAD FADHIL", jurusan: "IPA ", nilai: "81,08", status: "LULUS" },
+{ nisn: "3069887803", nama: "AHMAT TORIK SIREGAR", jurusan: "IPA ", nilai: "84,41", status: "LULUS" },
+{ nisn: "0079928753", nama: "ALDO AGUSTINO", jurusan: "IPA ", nilai: "80,77", status: "LULUS" },
+{ nisn: "0077118539", nama: "AMANDA BUDIANI PUTRI", jurusan: "IPA ", nilai: "85,02", status: "LULUS" },
+{ nisn: "0081632373", nama: "ARYA RANGGA", jurusan: "IPA ", nilai: "79,50", status: "LULUS" },
+{ nisn: "0076406470", nama: "DECA DESWITA", jurusan: "IPA ", nilai: "81,79", status: "LULUS" },
+{ nisn: "0076073130", nama: "DINDA SELINA", jurusan: "IPA ", nilai: "84,20", status: "LULUS" },
+{ nisn: "0079903134", nama: "ECA ARISA PUTRI", jurusan: "IPA ", nilai: "82,43", status: "LULUS" },
+{ nisn: "3089626196", nama: "FADLI APRILIANSYAH", jurusan: "IPA ", nilai: "80,69", status: "LULUS" },
+{ nisn: "0071046533", nama: "FARABI AFWAN", jurusan: "IPA ", nilai: "79,56", status: "LULUS" },
+{ nisn: "0087303427", nama: "FELA DELIVIYA", jurusan: "IPA ", nilai: "86,37", status: "LULUS" },
+{ nisn: "0075569035", nama: "HATTA AL FAJRI SIREGAR", jurusan: "IPA ", nilai: "86,82", status: "LULUS" },
+{ nisn: "0087082877", nama: "MUHAMMAD BAYU PRANATA", jurusan: "IPA ", nilai: "79,67", status: "LULUS" },
+{ nisn: "0073664075", nama: "MUHAMMAD RIZKY KADAFI", jurusan: "IPA ", nilai: "79,27", status: "LULUS" },
+{ nisn: "0085375840", nama: "MUHAMMAD SATRIO", jurusan: "IPA ", nilai: "79,30", status: "LULUS" },
+{ nisn: "0077607396", nama: "NAUFAL AKMAL", jurusan: "IPA ", nilai: "85,60", status: "LULUS" },
+{ nisn: "0088968318", nama: "NURAISAH", jurusan: "IPA ", nilai: "82,83", status: "LULUS" },
+{ nisn: "0076300308", nama: "PUTRI NUR WULAN DARI", jurusan: "IPA ", nilai: "85,03", status: "LULUS" },
+{ nisn: "0084925465", nama: "PUTRI SANDAYANI", jurusan: "IPA ", nilai: "83,84", status: "LULUS" },
+{ nisn: "0083343787", nama: "RADID FURNAMA", jurusan: "IPA ", nilai: "80,30", status: "LULUS" },
+{ nisn: "0086566006", nama: "RAHMA ANISA KHAIRANI", jurusan: "IPA ", nilai: "82,29", status: "LULUS" },
+{ nisn: "0085792803", nama: "RA'UF FAUZAN RAMBE", jurusan: "IPA ", nilai: "84,92", status: "LULUS" },
+{ nisn: "0083433968", nama: "RENI SYAHFITRI ", jurusan: "IPA ", nilai: "83,87", status: "LULUS" },
+{ nisn: "0071314455", nama: "RIZAL AL ANSHORI", jurusan: "IPA ", nilai: "88,07", status: "LULUS" },
+{ nisn: "0082862561", nama: "SATRIA WIBUNA", jurusan: "IPA ", nilai: "83,43", status: "LULUS" },
+{ nisn: "0084234654", nama: "SATRIO PRASETIA", jurusan: "IPA ", nilai: "84,24", status: "LULUS" },
+{ nisn: "0078142759", nama: "SATRIO SURYO NUGROHO", jurusan: "IPA ", nilai: "82,16", status: "LULUS" },
+{ nisn: "0082499205", nama: "SELVI LAURA PRISCILLA", jurusan: "IPA ", nilai: "84,29", status: "LULUS" },
+{ nisn: "0086334412", nama: "SILVI ANNISA", jurusan: "IPA ", nilai: "88,34", status: "LULUS" },
+{ nisn: "0074052814", nama: "SISI ADELIA", jurusan: "IPA ", nilai: "84,19", status: "LULUS" },
+{ nisn: "0077542305", nama: "SRI WULANDARI", jurusan: "IPA ", nilai: "86,75", status: "LULUS" },
+{ nisn: "0076217155", nama: "WAHYU HAFIZ  SYAHFITRAH", jurusan: "IPA ", nilai: "84,60", status: "LULUS" },
+            { nisn: "1111222233", nama: "Budi Santoso", jurusan: "IPA", nilai: "72.00", status: "TIDAK LULUS" },
+            { nisn: "4444555566", nama: "Nisa Azzahra", jurusan: "Keagamaan", nilai: "90.10", status: "LULUS" }
+        ];
+
+        let currentStudentData = null;
+
+        // TARGET WAKTU PENGUMUMAN
+        const targetDate = new Date("May 2, 2026 10:00:00").getTime();
+
+        function goToCekHalaman() {
+            document.getElementById('page-sambutan').classList.add('hidden');
+            document.getElementById('page-cek').classList.remove('hidden');
+            document.getElementById('page-cek').classList.add('fade-in');
+            checkCountdown();
+        }
+
+        function kembaliKeSambutan() {
+            document.getElementById('page-cek').classList.add('hidden');
+            document.getElementById('page-sambutan').classList.remove('hidden');
+        }
+
+        function resetForm() {
+            document.getElementById('nisn').value = '';
+            document.getElementById('hasil-container').classList.add('hidden');
+            document.getElementById('error-message').classList.add('hidden');
+            document.getElementById('form-container').classList.remove('hidden');
+        }
+
+        function checkCountdown() {
+            const timerInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance > 0) {
+                    document.getElementById('countdown-container').classList.remove('hidden');
+                    document.getElementById('form-container').classList.add('opacity-40', 'pointer-events-none');
+                    
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                    document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                    document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                    document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+                } else {
+                    clearInterval(timerInterval);
+                    document.getElementById('countdown-container').classList.add('hidden');
+                    document.getElementById('form-container').classList.remove('opacity-40', 'pointer-events-none');
+                }
+            }, 1000);
+        }
+
+        function cekKelulusan(event) {
+            event.preventDefault();
+            const nisnInput = document.getElementById('nisn').value.trim();
+            const hasilContainer = document.getElementById('hasil-container');
+            const errorMessage = document.getElementById('error-message');
+            const formContainer = document.getElementById('form-container');
+
+            errorMessage.classList.add('hidden');
+            hasilContainer.classList.add('hidden');
+
+            const dataSiswa = dataKelulusan.find(s => s.nisn === nisnInput);
+
+            if (dataSiswa) {
+                currentStudentData = dataSiswa;
+                formContainer.classList.add('hidden');
+
+                let statusColor = dataSiswa.status === "LULUS" ? "text-green-600 border-green-600 bg-green-50" : "text-red-600 border-red-600 bg-red-50";
+                let btnCetak = dataSiswa.status === "LULUS" ? `<button onclick="cetakSKL()" class="mt-4 w-full py-4 bg-brand-yellow hover:bg-yellow-500 text-gray-800 font-bold rounded-lg shadow-lg flex items-center justify-center transition-all">📄 DOWNLOAD SKL RESMI (PDF)</button>` : "";
+
+                hasilContainer.innerHTML = `
+                    <h2 class="text-2xl font-bold text-brand-dark-green uppercase">${dataSiswa.nama}</h2>
+                    <p class="text-gray-600 text-sm">NISN: ${dataSiswa.nisn} • Program: ${dataSiswa.jurusan}</p>
+                    <div class="mt-6 py-6 border-y border-dashed border-gray-300">
+                        <div class="inline-block px-10 py-3 border-2 rounded-lg ${statusColor}">
+                            <span class="text-3xl font-extrabold tracking-[0.3em]">${dataSiswa.status}</span>
+                        </div>
+                        <p class="mt-4 font-medium text-lg">${dataSiswa.status === 'LULUS' ? 'Alhamdulillah, Selamat atas Kelulusan Anda!' : 'Mohon bersabar dan tetap semangat belajar.'}</p>
+                    </div>
+                    ${btnCetak}
+                    <button onclick="resetForm()" class="mt-4 w-full py-2 text-brand-blue font-semibold hover:underline text-sm uppercase">CEK NISN LAIN</button>
+                    
+                    <div class="mt-8 pt-4 border-t border-gray-100 text-center">
+                        <p class="text-[10px] text-gray-400 mb-3 italic tracking-widest">HELP DESK</p>
+                        <a href="https://wa.me/6282277776514?text=Halo%20Admin,%20saya%20atas%20nama%20${encodeURIComponent(dataSiswa.nama)}%20(NISN:${dataSiswa.nisn})%20ingin%20bertanya%20mengenai%20kelulusan." target="_blank" class="wa-float-icon">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.335 0-4.241 1.906-4.241 4.241 0 .736.188 1.455.547 2.086l-.58 2.115 2.164-.567c.603.328 1.28.502 1.975.502 2.335 0 4.241-1.906 4.241-4.241s-1.906-4.241-4.241-4.241zm2.535 6.046c-.104.293-.603.541-.837.575-.234.034-.523.056-.849-.045-.214-.067-.484-.158-.789-.293-1.285-.567-2.12-1.888-2.188-1.977-.067-.09-.541-.722-.541-1.376 0-.654.338-.971.461-1.104.124-.135.27-.169.361-.169s.18 0 .259.006c.079.005.186-.034.292.226.11.265.372.903.406.971.034.068.056.147.011.237-.045.09-.067.147-.135.226-.068.079-.141.175-.203.243-.067.068-.135.147-.056.282.079.135.35 1.139.75 1.488.513.456.942.597 1.077.665.135.068.214.056.293-.034.079-.09.338-.395.428-.53.09-.135.18-.113.305-.068s.789.372.925.44.135.068.226.102.259.158.034.056.034.327-.071.62zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176l-1.435 5.234 5.351-1.405C8.75 21.696 10.316 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+                        </a>
+                    </div>
+                `;
+                hasilContainer.classList.remove('hidden');
+            } else {
+                errorMessage.classList.remove('hidden');
+            }
+        }
+
+        function cetakSKL() {
+            document.getElementById('pdf-nama').innerText = currentStudentData.nama;
+            document.getElementById('pdf-nisn').innerText = currentStudentData.nisn;
+            document.getElementById('pdf-jurusan').innerText = currentStudentData.jurusan;
+            document.getElementById('pdf-nilai').innerText = currentStudentData.nilai;
+
+            const element = document.getElementById('skl-document');
+            element.style.display = 'block';
+            
+            const opt = {
+                margin: 0.5,
+                filename: 'SKL_MAS_Subulussalam_' + currentStudentData.nama + '.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
